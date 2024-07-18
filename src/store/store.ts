@@ -3,6 +3,6 @@ import usersReducer from './reducers/usersReducer'
 
 export default configureStore({
     reducer: {
-        posts: usersReducer
+        users: usersReducer,
     }
 })

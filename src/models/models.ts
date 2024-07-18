@@ -6,6 +6,7 @@ export interface PostCardData {
 }
 
 export interface Post {
+    postId: number;
     title: string;
     text: string;
     postedAt: string;
