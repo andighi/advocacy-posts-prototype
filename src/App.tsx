@@ -1,10 +1,10 @@
 import './assets/styles/App.scss'
-import PostCard from './components/posts/PostCard.jsx'
+import PostCard from './components/posts/PostCard'
 import { PostCardData } from './models/models.ts'
 import { useEffect, useState } from 'react'
 import initialUsersInformation from './initialData.json'
 import { useDispatch, useSelector } from 'react-redux'
-import { setInitialData } from './store/reducers/usersReducer.js'
+import { setInitialData } from './store/reducers/usersReducer'
 
 function App() {
 
