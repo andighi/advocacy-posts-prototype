@@ -5,4 +5,23 @@ $cat-font-path: '../../assets/fonts';
 html,
 body {
     height: 100%;
+
+    .posts-container {
+        max-width: 600px;
+        margin: 0 auto;
+
+        .post-image {
+            object-fit: cover;
+        }
+
+        .input-comment {
+            @media screen and (min-width: 600px) {
+                min-width: 75%;
+            }
+        }
+
+        .comment {
+            background-color: cat-token('color.base.neutral.100')
+        }
+    }
 }
