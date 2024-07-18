@@ -5,7 +5,8 @@
       "name": "Robert",
       "avatar": "https://tinyurl.com/bdcu9va5",
       "posts": [
-        {
+        { 
+          "postId": 8373,
           "title": "Title",
           "text": "Lore impsum ae aga sulae ipsum",
           "postedAt": "1h ago",
@@ -14,7 +15,13 @@
             "Diana",
             "Sun",
             "Livia",
-            "Costa"
+            "Marcel",
+            "Yamal",
+            "Clever",
+            "Patricia",
+            "Sua",
+            "Tao"
+            
           ],
           "comments": [
             {
@@ -27,6 +34,7 @@
           "liked": true
         },
         {
+          "postId": 833213,
           "title": "Title2",
           "text": "Lore impsum ipsum supum",
           "postedAt": "4h ago",
