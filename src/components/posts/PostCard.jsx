@@ -61,6 +61,7 @@ function PostCard({ id, name, avatar, post }) {
                         icon="thumbs-up-outlined"
                         variant="text"
                         color={post.liked ? "primary" : ""}
+                        data-testid={"like-button" + post.postId}
                         onClick={() =>
                             onClickLike({
                                 userId: id,
@@ -85,7 +86,7 @@ function PostCard({ id, name, avatar, post }) {
                     >
                         <cat-icon icon="thumbs-up-outlined" size="s" />
                     </span>
-                    <span>
+                    <span data-testid={"liked-by" + post.postId}>
                         Liked by {post.liked ? "You, " : ""}
                         {likedByList()}
                     </span>

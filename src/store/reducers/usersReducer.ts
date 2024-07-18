@@ -20,6 +20,10 @@ export const usersReducer = createSlice({
             }
         },
 
+        setInitialDataTest: (state, action) => {
+            state.users = action.payload;
+        },
+
         updateLikeAction: (state, action) => {
             let userIndex;
             let postIndex;
@@ -42,6 +46,6 @@ const setToLocalStorage = (payload: any) => {
     localStorage.setItem('users', JSON.stringify(payload));
 }
 
-export const { setInitialData, updateLikeAction } = usersReducer.actions
+export const { setInitialData, updateLikeAction, setInitialDataTest } = usersReducer.actions
 
 export default usersReducer.reducer
