@@ -1,0 +1,13 @@
+$cat-font-path: '../../assets/fonts';
+@import "@haiilo/catalyst/dist/catalyst/scss";
+@import '@haiilo/catalyst/dist/catalyst/scss/variables';
+
+html,
+body {
+    height: 100%;
+}
+
+// .myelement {
+//     border: 1px solid cat-token('color.ui.border.default');
+//     background-color: cat-token('color.base.neutral.700');
+// }
