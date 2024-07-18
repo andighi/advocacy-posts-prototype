@@ -1,0 +1,8 @@
+$cat-font-path: '../../assets/fonts';
+@import "@haiilo/catalyst/dist/catalyst/scss";
+@import '@haiilo/catalyst/dist/catalyst/scss/variables';
+
+html,
+body {
+    height: 100%;
+}
