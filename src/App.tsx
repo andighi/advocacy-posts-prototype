@@ -1,12 +1,14 @@
-
 import './assets/styles/App.scss'
+import PostCard from './components/PostCard'
 
 function App() {
 
   return (
     <>
-      <div>
-        Hi
+      <div className='posts-container cat-p-xl' >
+        <PostCard />
+        <PostCard />
+
       </div>
     </>
   )
