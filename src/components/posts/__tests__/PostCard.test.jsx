@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import store from '../../../store/store';
 import initialData from '../../../initialData.json';
 import userEvent from '@testing-library/user-event';
-import App from '../../../App'
+import Feed from '../../../views/Feed'
 import { expect } from 'vitest';
 
 const renderWithProvider = (ui, { reduxStore = store } = {}) => {
@@ -15,7 +15,7 @@ const renderWithProvider = (ui, { reduxStore = store } = {}) => {
 
 describe('Like button functionality', () => {
     it('The state changes when pressing on like button', async () => {
-        renderWithProvider(<App />)
+        renderWithProvider(<Feed />)
         const { posts } = initialData.users[0];
         const isPostLiked = posts[0].liked;
         const likeButton = screen.getByTestId("like-button" + posts[0].postId)
@@ -27,7 +27,7 @@ describe('Like button functionality', () => {
     });
 
     it('The Liked by text changes', async () => {
-        renderWithProvider(<App />)
+        renderWithProvider(<Feed />)
         const { posts } = initialData.users[0];
         const isPostLiked = posts[0].liked;
         const likeButton = screen.getByTestId("like-button" + posts[0].postId)
