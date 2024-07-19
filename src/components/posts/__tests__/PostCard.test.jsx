@@ -40,3 +40,26 @@ describe('Like button functionality', () => {
         expect(likedByText).toHaveTextContent(isPostLiked ? 'Liked by You' : `Liked by ${posts[0].likedBy[0]}`)
     })
 })
+
+describe('Comment functionality', () => {
+    it('Comment is added after submitting', async () => {
+        renderWithProvider(<Feed />)
+        const { posts } = initialData.users[0];
+
+        const firstCardOld = screen.getAllByTitle('post-card')[0];
+        const numberOfCommentsOld = firstCardOld.getElementsByClassName('comment').length;
+
+        const commentInput = screen.getByTestId("comment-input" + posts[0].postId)
+        const sendCommentButton = screen.getByTestId("send-comment-btn" + posts[0].postId)
+
+        await userEvent.type(commentInput, "Thank you!")
+        await userEvent.click(sendCommentButton);
+
+        const firstCard = screen.getAllByTitle('post-card')[0];
+
+        const newNumberOfComments = firstCard.getElementsByClassName('comment').length;
+
+        expect(newNumberOfComments).toBe(numberOfCommentsOld + 1);
+
+    });
+})
