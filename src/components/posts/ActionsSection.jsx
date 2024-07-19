@@ -29,9 +29,7 @@ function ActionsSection({ postData, emitFocus }) {
                     variant="text"
                     color={postData.liked ? "primary" : ""}
                     data-testid={"like-button" + postData.postId}
-                    onClick={() =>
-                        onClickLike(postData)
-                    }
+                    onClick={() => onClickLike(postData)}
                 >
                     {postData.liked ? "Liked" : "Like"}
                 </cat-button>
