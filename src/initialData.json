@@ -7,8 +7,8 @@
       "posts": [
         { 
           "postId": 8373,
-          "title": "Title",
-          "text": "Lore impsum ae aga sulae ipsum",
+          "title": "My first time in Greece",
+          "text": "I feel like home!",
           "postedAt": "1h ago",
           "image": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/greek-seaside-parga.jpg",
           "likedBy": [
@@ -35,8 +35,8 @@
         },
         {
           "postId": 833213,
-          "title": "Title2",
-          "text": "Lore impsum ipsum supum",
+          "title": "This is stunning!",
+          "text": "I will come back!",
           "postedAt": "4h ago",
           "image": "https://www.worldlifetimejourneys.com/wp-content/uploads/2019/05/Greece-Holiday-Offers-700px.jpg",
           "likedBy": [
