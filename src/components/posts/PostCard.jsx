@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
 import Comment from "./Comment";
-import { updateLikeAction } from "../../store/reducers/usersReducer.ts";
+import AddCommentSection from "./AddCommentSection";
+import ActionsSection from "./ActionsSection";
+import { useState } from "react";
 
 function PostCard({ id, name, avatar, post }) {
-    const dispatch = useDispatch();
+    const [focus, setFocus] = useState(null);
 
     const likedByList = () => {
         const filteredPeople = post.likedBy.reduce((acc, curr, i, self) => {
@@ -22,14 +23,18 @@ function PostCard({ id, name, avatar, post }) {
         );
     };
 
-    const onClickLike = (payload) => {
-        dispatch(updateLikeAction(payload));
-    };
+    const focusOnInput = (value) => {
+        if (value === null) {
+            setFocus(() => true);
+        } else {
+            setFocus(() => !focus);
+        }
+    }
 
     return (
         <>
-            <cat-card class={"cat-mb-l cat-p-l"}>
-                {/* START HEADER */}
+            <cat-card class={"cat-mb-l cat-p-l post-card"} title='post-card'>
+                {/* HEADER START */}
                 <div className="cat-flex cat-items-center header">
                     <cat-avatar src={avatar} label="avatar" round></cat-avatar>
                     <div className="cat-ml-s">
@@ -40,7 +45,7 @@ function PostCard({ id, name, avatar, post }) {
 
                 <div className="cat-hr cat-mv-m"></div>
 
-                {/* START CONTENT */}
+                {/* CONTENT START */}
                 <div>
                     <div className="content">
                         <h2>{post.title}</h2>
@@ -55,31 +60,11 @@ function PostCard({ id, name, avatar, post }) {
                     </div>
                 </div>
 
-                {/* ACTIONS SECTION (LIKE / COMMENT) */}
-                <div className="likes cat-flex cat-items-center">
-                    <cat-button
-                        icon="thumbs-up-outlined"
-                        variant="text"
-                        color={post.liked ? "primary" : ""}
-                        data-testid={"like-button" + post.postId}
-                        onClick={() =>
-                            onClickLike({
-                                userId: id,
-                                postId: post.postId,
-                                liked: post.liked,
-                            })
-                        }
-                    >
-                        {post.liked ? "Liked" : "Like"}
-                    </cat-button>
-                    <cat-button icon="comment-outlined" variant="text">
-                        Comment
-                    </cat-button>
-                </div>
-
+                {/* ACTIONS SECTION (LIKE / COMMENT) START */}
+                <ActionsSection postData={{ userId: id, postId: post.postId, liked: post.liked }} emitFocus={focusOnInput} />
                 <div className="cat-hr cat-mv-m"></div>
 
-                {/* START LIKED BY SECTION */}
+                {/* LIKED BY SECTION START */}
                 <div className="cat-flex cat-items-center cat-text-xs">
                     <span
                         className={post.liked ? "cat-mr-s cat-text-primary" : "cat-mr-s"}
@@ -94,22 +79,10 @@ function PostCard({ id, name, avatar, post }) {
 
                 <div className="cat-hr cat-mv-m"></div>
 
-                {/* START COMMENT SECTION */}
-                <div className="cat-flex cat-items-center cat-mb-l">
-                    <cat-input
-                        placeholder="Write a comment..."
-                        class="input-comment"
-                    ></cat-input>
-                    <cat-button
-                        icon-right="true"
-                        icon="arrow-right-outlined"
-                        variant="text"
-                    >
-                        Comment
-                    </cat-button>
-                </div>
+                {/* ADD COMMENT SECTION START */}
+                <AddCommentSection postData={{ userId: id, postId: post.postId }} focusInput={focus} />
 
-                {/* COMMENTS */}
+                {/* COMMENTS SECTION START*/}
                 {post.comments.map((comment) => (
                     <Comment comment={comment} key={comment.id} />
                 ))}

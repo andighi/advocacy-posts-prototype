@@ -38,6 +38,21 @@ export const usersReducer = createSlice({
                     setToLocalStorage(state.users);
                 }
             }
+        },
+
+        addComment: (state, action) => {
+            let userIndex;
+            let postIndex;
+            const user = state.users.find(user => user.userId === action.payload.userId);
+            if (user) {
+                userIndex = state.users.findIndex(user => user.userId === action.payload.userId);
+                const post = user.posts.find(post => post.postId === action.payload.postId);
+                if (post) {
+                    postIndex = user.posts.findIndex(post => post.postId === action.payload.postId);
+                    state.users[userIndex].posts[postIndex].comments.push({ id: Date.now(), name: user.name, avatar: user.avatar, text: action.payload.comment })
+                    setToLocalStorage(state.users);
+                }
+            }
         }
     }
 })
@@ -46,6 +61,13 @@ const setToLocalStorage = (payload: any) => {
     localStorage.setItem('users', JSON.stringify(payload));
 }
 
-export const { setInitialData, updateLikeAction, setInitialDataTest } = usersReducer.actions
+export interface Comment {
+    id: number,
+    name: string;
+    avatar: string;
+    text: string;
+}
+
+export const { setInitialData, updateLikeAction, setInitialDataTest, addComment } = usersReducer.actions
 
 export default usersReducer.reducer
