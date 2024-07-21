@@ -24,8 +24,10 @@ export const usersReducer = createSlice({
             const { userIndex, postIndex } = getUserAndPost(state, action);
 
             if (userIndex !== null && postIndex !== null) {
-                const newP = { ...state.users[userIndex].posts[postIndex], liked: !action.payload.liked }
-                state.users[userIndex].posts[postIndex] = newP;
+                const user = state.users[userIndex];
+                const post = user.posts[postIndex];
+                const newPost = { ...post, liked: !action.payload.liked }
+                state.users[userIndex].posts[postIndex] = newPost;
                 setToLocalStorage(state.users);
             }
         },
@@ -33,7 +35,9 @@ export const usersReducer = createSlice({
         addComment: (state, action) => {
             const { userIndex, postIndex } = getUserAndPost(state, action)
             if (userIndex !== null && postIndex !== null) {
-                state.users[userIndex].posts[postIndex].comments.push({ id: Date.now(), name: state.users[userIndex].name, avatar: state.users[userIndex].avatar, text: action.payload.comment })
+                const user = state.users[userIndex];
+                const post = user.posts[postIndex];
+                post.comments.push({ id: Date.now(), name: user.name, avatar: user.avatar, text: action.payload.comment })
                 setToLocalStorage(state.users);
             }
         }
