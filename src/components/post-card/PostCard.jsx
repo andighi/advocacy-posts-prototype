@@ -4,8 +4,11 @@ import ActionsSection from "./components/ActionsSection";
 import { useState } from "react";
 import LikedBySection from "./components/LikedBySection";
 import HeaderSection from "./components/HeaderSection";
+import { useSelector } from "react-redux";
 
 function PostCard({ userId, name, avatar, post }) {
+  const userInfo = useSelector((state) => state.users.users);
+
   const [focus, setFocus] = useState(null);
 
   const focusOnInput = (value) => {
@@ -18,7 +21,10 @@ function PostCard({ userId, name, avatar, post }) {
 
   return (
     <>
-      <cat-card class={"cat-mb-l cat-p-l post-card"} data-testid={"post-card"}>
+      <cat-card
+        class={"cat-mb-l cat-p-l post-card"}
+        data-testid={"post-card" + post.postId}
+      >
         <HeaderSection
           user={{ id: userId, name: name, avatar: avatar }}
           post={post}
@@ -46,7 +52,7 @@ function PostCard({ userId, name, avatar, post }) {
         />
         <div className="cat-hr cat-mv-m"></div>
 
-        {post.likedBy && <LikedBySection post={post} />}
+        {<LikedBySection post={post} />}
 
         <div className="cat-hr cat-mv-m"></div>
 
@@ -55,6 +61,11 @@ function PostCard({ userId, name, avatar, post }) {
           focusInput={focus}
         />
 
+        {!post.comments.length && (
+          <div data-testid="no-comments-yet" className="no-comments-yet">
+            No comments yet.
+          </div>
+        )}
         <div className="comment-section">
           {post.comments &&
             post.comments.map((comment) => (

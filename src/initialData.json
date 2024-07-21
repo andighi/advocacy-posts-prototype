@@ -6,26 +6,24 @@
       "avatar": "https://tinyurl.com/bdcu9va5",
       "posts": [
         { 
-          "postId": 8373,
+          "postId": 12123,
           "title": "My first time in Greece",
           "text": "I feel like home!",
           "postedAt": "1h ago",
           "image": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/greek-seaside-parga.jpg",
-          "likedBy": [
-           
-          ],
+          "likedBy": [],
           "comments": [
             {
-              "id": 32132,
+              "id": 32131,
               "name": "Alisa",
               "avatar": "https://varbai.com/wp-content/uploads/2019/02/thispersondoesnotexis.jpg",
               "text": "Oh my god! that is stunning!"
             }
           ],
-          "liked": true
+          "liked": false
         },
         {
-          "postId": 833213,
+          "postId": 4243,
           "title": "This is stunning!",
           "text": "I will come back!",
           "postedAt": "4h ago",
@@ -38,13 +36,13 @@
           ],
           "comments": [
             {
-              "id": 321,
+              "id": 34535,
               "name": "Andrew",
               "avatar": "https://preview.redd.it/this-person-does-not-exist-v0-9l5x3d2g21591.jpg?auto=webp&s=97e2a0e5624f9e052678ddb38812fea2945f5b19",
               "text": "Wow!"
             },
             {
-              "id": 231,
+              "id": 645644,
               "name": "Andrew",
               "avatar": "https://preview.redd.it/this-person-does-not-exist-v0-9l5x3d2g21591.jpg?auto=webp&s=97e2a0e5624f9e052678ddb38812fea2945f5b19",
               "text": "Breath taking! Have a great time, Robert!"
@@ -52,6 +50,46 @@
         
           ],
           "liked": false
+        },
+        { 
+          "postId": 11123,
+          "title": "Another angle",
+          "text": "The air quality is incredible!",
+          "postedAt": "5h ago",
+          "image": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/greek-seaside-parga.jpg",
+          "likedBy": [
+            "Ana",
+            "Pliskova"
+          ],
+          "comments": [
+            {
+              "id": 6543,
+              "name": "Alisa",
+              "avatar": "https://varbai.com/wp-content/uploads/2019/02/thispersondoesnotexis.jpg",
+              "text": "Gorgeous!"
+            }
+          ],
+          "liked": false
+        },
+
+        { 
+          "postId": 34242114,
+          "title": "Check this out!",
+          "text": "I 100% recommend!",
+          "postedAt": "6h ago",
+          "image": "https://www.telegraph.co.uk/content/dam/Travel/2019/January/greek-seaside-parga.jpg",
+          "likedBy": [
+            "Ana",
+            "Dan",
+            "Erin",
+            "Cris",
+            "Maria",
+            "Elena",
+            "Barista",
+            "Lou"
+          ],
+          "comments": [],
+          "liked": true
         }
       ]
     }
