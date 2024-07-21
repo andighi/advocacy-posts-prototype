@@ -21,37 +21,38 @@ export const usersReducer = createSlice({
         },
 
         updateLikeAction: (state, action) => {
-            let userIndex;
-            let postIndex;
-            const user = state.users.find(user => user.userId == action.payload.userId);
-            if (user) {
-                userIndex = state.users.findIndex(user => user.userId === action.payload.userId);
-                const post = user.posts.find(post => post.postId === action.payload.postId);
-                if (post) {
-                    postIndex = user.posts.findIndex(post => post.postId === action.payload.postId);
-                    const newP = { ...post, liked: !action.payload.liked }
-                    state.users[userIndex].posts[postIndex] = newP;
-                    setToLocalStorage(state.users);
-                }
+            const { userIndex, postIndex } = getUserAndPost(state, action);
+
+            if (userIndex !== null && postIndex !== null) {
+                const newP = { ...state.users[userIndex].posts[postIndex], liked: !action.payload.liked }
+                state.users[userIndex].posts[postIndex] = newP;
+                setToLocalStorage(state.users);
             }
         },
 
         addComment: (state, action) => {
-            let userIndex;
-            let postIndex;
-            const user = state.users.find(user => user.userId === action.payload.userId);
-            if (user) {
-                userIndex = state.users.findIndex(user => user.userId === action.payload.userId);
-                const post = user.posts.find(post => post.postId === action.payload.postId);
-                if (post) {
-                    postIndex = user.posts.findIndex(post => post.postId === action.payload.postId);
-                    state.users[userIndex].posts[postIndex].comments.push({ id: Date.now(), name: user.name, avatar: user.avatar, text: action.payload.comment })
-                    setToLocalStorage(state.users);
-                }
+            const { userIndex, postIndex } = getUserAndPost(state, action)
+            if (userIndex !== null && postIndex !== null) {
+                state.users[userIndex].posts[postIndex].comments.push({ id: Date.now(), name: state.users[userIndex].name, avatar: state.users[userIndex].avatar, text: action.payload.comment })
+                setToLocalStorage(state.users);
             }
         }
     }
 })
+
+const getUserAndPost = (state: UsersState, action: any) => {
+    let userIndex = null;
+    let postIndex = null;
+    const user = state.users.find(user => user.userId === action.payload.userId);
+    if (user) {
+        userIndex = state.users.findIndex(user => user.userId === action.payload.userId);
+        const post = user.posts.find(post => post.postId === action.payload.postId);
+        if (post) {
+            postIndex = user.posts.findIndex(post => post.postId === action.payload.postId);
+        }
+    }
+    return { userIndex, postIndex }
+}
 
 const setToLocalStorage = (payload: any) => {
     localStorage.setItem('users', JSON.stringify(payload));
