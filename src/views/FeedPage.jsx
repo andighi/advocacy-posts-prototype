@@ -1,4 +1,4 @@
-import PostCard from "../components/posts/PostCard";
+import PostCard from "../components/post-card/PostCard";
 import { useEffect, useState } from "react";
 import initialUsersInformation from "../initialData.json";
 import { useDispatch, useSelector } from "react-redux";

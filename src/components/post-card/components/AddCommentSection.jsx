@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addComment } from "../../store/reducers/usersReducer";
+import { addComment } from "../../../store/reducers/usersReducer";
 
 function AddCommentSection({ postData, focusInput }) {
   const inputRef = useRef(null);
@@ -9,7 +9,7 @@ function AddCommentSection({ postData, focusInput }) {
   const dispatch = useDispatch();
 
   const onComment = (event) => {
-    setComment(() => event.target.value);
+    setComment(() => event.target.value.trim());
   };
 
   const onCommentSubmit = () => {
