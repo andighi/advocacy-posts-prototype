@@ -86,21 +86,15 @@ function PostCard({ id, name, avatar, post }) {
 
         <div className="cat-hr cat-mv-m"></div>
 
-        {/* ADD COMMENT SECTION START */}
         <AddCommentSection
           postData={{ userId: id, postId: post.postId }}
           focusInput={focus}
         />
 
-        {/* COMMENTS SECTION START*/}
         {post.comments.map((comment) => (
           <Comment comment={comment} key={comment.id} />
         ))}
       </cat-card>
-
-      {/* <dialog open>
-                <div>hii</div>
-            </dialog> */}
     </>
   );
 }
