@@ -4,7 +4,7 @@ import ActionsSection from "./ActionsSection";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function PostCard({ id, name, avatar, post }) {
+function PostCard({ userId, name, avatar, post }) {
   const [focus, setFocus] = useState(null);
 
   const likedByList = () => {
@@ -34,7 +34,7 @@ function PostCard({ id, name, avatar, post }) {
 
   return (
     <>
-      <cat-card class={"cat-mb-l cat-p-l post-card"} title="post-card">
+      <cat-card class={"cat-mb-l cat-p-l post-card"} data-testid={"post-card"}>
         {/* HEADER START */}
         <div className="cat-flex cat-items-center cat-justify-between">
           <div className="cat-flex cat-items-center header">
@@ -44,7 +44,7 @@ function PostCard({ id, name, avatar, post }) {
               <div className="cat-text-xs text">{post.postedAt}</div>
             </div>
           </div>
-          <Link to={`user/${id}?postId=${post.postId}`}>View post</Link>
+          <Link to={`user/${userId}?postId=${post.postId}`}>View post</Link>
         </div>
 
         <div className="cat-hr cat-mv-m"></div>
@@ -66,7 +66,7 @@ function PostCard({ id, name, avatar, post }) {
 
         {/* ACTIONS SECTION (LIKE / COMMENT) START */}
         <ActionsSection
-          postData={{ userId: id, postId: post.postId, liked: post.liked }}
+          postData={{ userId: userId, postId: post.postId, liked: post.liked }}
           emitFocus={focusOnInput}
         />
         <div className="cat-hr cat-mv-m"></div>
@@ -87,13 +87,15 @@ function PostCard({ id, name, avatar, post }) {
         <div className="cat-hr cat-mv-m"></div>
 
         <AddCommentSection
-          postData={{ userId: id, postId: post.postId }}
+          postData={{ userId: userId, postId: post.postId }}
           focusInput={focus}
         />
 
-        {post.comments.map((comment) => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
+        <div className="comment-section">
+          {post.comments.map((comment) => (
+            <Comment comment={comment} key={comment.id} />
+          ))}
+        </div>
       </cat-card>
     </>
   );

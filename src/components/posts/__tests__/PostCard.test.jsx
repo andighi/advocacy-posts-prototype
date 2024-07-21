@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
 import initialData from "../../../initialData.json";
@@ -52,7 +52,7 @@ describe("Comment functionality", () => {
     renderWithProvider(<Feed />);
     const { posts } = initialData.users[0];
 
-    const firstCardOld = screen.getAllByTitle("post-card")[0];
+    const firstCardOld = screen.getAllByTestId("post-card")[0];
     const numberOfCommentsOld =
       firstCardOld.getElementsByClassName("comment").length;
 
@@ -62,9 +62,12 @@ describe("Comment functionality", () => {
     );
 
     await userEvent.type(commentInput, "Thank you!");
+
+    waitFor(() => expect(sendCommentButton).toBeEnabled(), { timeout: 2000 });
+
     await userEvent.click(sendCommentButton);
 
-    const firstCard = screen.getAllByTitle("post-card")[0];
+    const firstCard = screen.getAllByTestId("post-card")[0];
 
     const newNumberOfComments =
       firstCard.getElementsByClassName("comment").length;

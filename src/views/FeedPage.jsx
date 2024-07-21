@@ -20,17 +20,17 @@ function FeedPage() {
     <>
       <div className="posts-container cat-p-xl">
         {usersInfo &&
-          usersInfo[0]?.posts.map((post) => {
-            return (
+          usersInfo.map((user) =>
+            user.posts.map((post) => (
               <PostCard
-                id={usersInfo[0].userId}
-                name={usersInfo[0].name}
-                avatar={usersInfo[0].avatar}
+                userId={user.userId}
+                name={user.name}
+                avatar={user.avatar}
                 post={post}
                 key={post.postId}
               />
-            );
-          })}
+            ))
+          )}
       </div>
     </>
   );
