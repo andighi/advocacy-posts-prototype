@@ -12,7 +12,7 @@ function HeaderSection({ user, post }) {
             <div className="cat-text-xs text">{post.postedAt}</div>
           </div>
         </div>
-        <Link to={`user/${user.userId}?postId=${post.postId}`}>View post</Link>
+        <Link to={`user/${user.id}?postId=${post.postId}`}>View post</Link>
       </div>
     </>
   );

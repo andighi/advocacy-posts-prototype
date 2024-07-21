@@ -4,11 +4,8 @@ import ActionsSection from "./components/ActionsSection";
 import { useState } from "react";
 import LikedBySection from "./components/LikedBySection";
 import HeaderSection from "./components/HeaderSection";
-import { useSelector } from "react-redux";
 
 function PostCard({ userId, name, avatar, post }) {
-  const userInfo = useSelector((state) => state.users.users);
-
   const [focus, setFocus] = useState(null);
 
   const focusOnInput = (value) => {
