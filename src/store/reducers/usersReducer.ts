@@ -23,7 +23,7 @@ export const usersReducer = createSlice({
         updateLikeAction: (state, action) => {
             let userIndex;
             let postIndex;
-            const user = state.users.find(user => user.userId === action.payload.userId);
+            const user = state.users.find(user => user.userId == action.payload.userId);
             if (user) {
                 userIndex = state.users.findIndex(user => user.userId === action.payload.userId);
                 const post = user.posts.find(post => post.postId === action.payload.postId);
