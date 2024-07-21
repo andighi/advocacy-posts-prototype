@@ -57,13 +57,6 @@ const setToLocalStorage = (payload: any) => {
     localStorage.setItem('users', JSON.stringify(payload));
 }
 
-export interface Comment {
-    id: number,
-    name: string;
-    avatar: string;
-    text: string;
-}
-
 export const { setInitialData, updateLikeAction, addComment } = usersReducer.actions
 
 export default usersReducer.reducer

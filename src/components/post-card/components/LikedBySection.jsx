@@ -34,7 +34,6 @@ function LikedBySection({ post }) {
 
   return (
     <>
-      {/* LIKED BY SECTION START */}
       <div className="cat-flex cat-items-center cat-text-xs">
         <span className={post.liked ? "cat-mr-s cat-text-primary" : "cat-mr-s"}>
           <cat-icon icon="thumbs-up-outlined" size="s" />
