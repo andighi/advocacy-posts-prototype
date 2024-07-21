@@ -22,7 +22,6 @@ function ActionsSection({ postData, emitFocus }) {
 
   return (
     <>
-      {/* ACTIONS SECTION (LIKE / COMMENT) */}
       <div className="likes cat-flex cat-items-center">
         <cat-button
           icon="thumbs-up-outlined"

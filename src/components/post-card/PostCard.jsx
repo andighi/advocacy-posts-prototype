@@ -39,6 +39,7 @@ function PostCard({ userId, name, avatar, post }) {
               src={post.image}
               className="post-image cat-radius-m"
               width={"100%"}
+              alt="Picture should be here"
             ></img>
           </div>
         </div>
