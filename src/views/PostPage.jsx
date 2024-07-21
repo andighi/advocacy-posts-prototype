@@ -42,7 +42,6 @@ function PostPage() {
             <div className="cat-text-xl text cat-ml-l cat-text-center">
               {post.title}
             </div>
-
             <div className="cat-text-l text  cat-diaplay-flex cat-items-center cat-text-primary">
               <cat-icon icon="thumbs-up-outlined" size="xl" />
               <span className="">
@@ -51,8 +50,7 @@ function PostPage() {
             </div>
           </div>
         </cat-card>
-
-        <img src={post.image}></img>
+        <img src={post.image} />
         <div className="cat-text-l cat-mt-m cat-flex cat-justify-between ">
           <div>{post.text}</div>
           <div className="">

@@ -20,10 +20,6 @@ export const usersReducer = createSlice({
             }
         },
 
-        setInitialDataTest: (state, action) => {
-            state.users = action.payload;
-        },
-
         updateLikeAction: (state, action) => {
             let userIndex;
             let postIndex;
@@ -68,6 +64,6 @@ export interface Comment {
     text: string;
 }
 
-export const { setInitialData, updateLikeAction, setInitialDataTest, addComment } = usersReducer.actions
+export const { setInitialData, updateLikeAction, addComment } = usersReducer.actions
 
 export default usersReducer.reducer
