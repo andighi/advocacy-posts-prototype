@@ -70,7 +70,7 @@ function PostPage() {
             </div>
           </div>
         </cat-card>
-        <img src={post.image} />
+        <img src={post.image} alt="Picture should be here" />
         <div className="cat-text-l cat-mt-m cat-flex cat-justify-between ">
           <div>{post.text}</div>
           <div className="">
