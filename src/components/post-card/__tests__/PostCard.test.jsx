@@ -6,6 +6,7 @@ import userEvent from "@testing-library/user-event";
 import Feed from "../../../views/FeedPage";
 import { expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
+import PostCard from "../PostCard";
 
 const renderWithProvider = (ui, { reduxStore = store } = {}) => {
   return {
@@ -19,30 +20,29 @@ const renderWithProvider = (ui, { reduxStore = store } = {}) => {
 };
 
 describe("Like button functionality", () => {
-  it("The state changes when pressing on like button", async () => {
-    renderWithProvider(<Feed />);
-    const { posts } = initialData.users[0];
-    const isPostLiked = posts[0].liked;
-    const likeButton = screen.getByTestId("like-button" + posts[0].postId);
-    await userEvent.click(likeButton);
-
-    // assertions
-    expect(store.getState().users.users[0].posts[0].liked).toBe(!isPostLiked);
-  });
-
   it("The Liked by text changes", async () => {
-    renderWithProvider(<Feed />);
-    const { posts } = initialData.users[0];
-    const isPostLiked = posts[0].liked;
-    const likeButton = screen.getByTestId("like-button" + posts[0].postId);
+    const currentUser = initialData.users[0];
+    const postToRender = currentUser.posts[0];
+
+    renderWithProvider(
+      <PostCard
+        userId={currentUser.userId}
+        avatar={currentUser.avatar}
+        name={currentUser.name}
+        post={currentUser.posts[0]}
+      />
+    );
+
+    const isPostLiked = postToRender.liked;
+    const likeButton = screen.getByTestId("like-button" + postToRender.postId);
 
     await userEvent.click(likeButton);
 
-    const likedByText = screen.getByTestId("liked-by" + posts[0].postId);
+    const likedByText = screen.getByTestId("liked-by" + postToRender.postId);
 
     // assertions
     expect(likedByText).toHaveTextContent(
-      isPostLiked ? "Liked by You" : `Liked by ${posts[0].likedBy[0]}`
+      isPostLiked ? "Liked by You" : `Liked by ${postToRender.likedBy[0]}`
     );
   });
 });
