@@ -5,7 +5,12 @@ function HeaderSection({ user, post }) {
     <>
       <div className="cat-flex cat-items-center cat-justify-between">
         <div className="cat-flex cat-items-center header">
-          <cat-avatar src={user.avatar} label="avatar" round></cat-avatar>
+          <cat-avatar
+            src={user.avatar}
+            label="avatar"
+            round
+            alt="robert"
+          ></cat-avatar>
           <div className="cat-ml-s">
             <div>{user.name}</div>
             <div className="cat-text-xs text">{post.postedAt}</div>
