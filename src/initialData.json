@@ -28,7 +28,7 @@
               "id": 32132,
               "name": "Alisa",
               "avatar": "https://varbai.com/wp-content/uploads/2019/02/thispersondoesnotexis.jpg",
-              "text": "Lore impsum ae aga sulae ipsum"
+              "text": "Oh my god! that is stunning!"
             }
           ],
           "liked": true
@@ -47,17 +47,18 @@
           ],
           "comments": [
             {
-              "id": 231,
-              "name": "Andrew",
-              "avatar": "https://preview.redd.it/this-person-does-not-exist-v0-9l5x3d2g21591.jpg?auto=webp&s=97e2a0e5624f9e052678ddb38812fea2945f5b19",
-              "text": "Lore impsum"
-            },
-            {
               "id": 321,
               "name": "Andrew",
               "avatar": "https://preview.redd.it/this-person-does-not-exist-v0-9l5x3d2g21591.jpg?auto=webp&s=97e2a0e5624f9e052678ddb38812fea2945f5b19",
-              "text": "Lore impsum"
+              "text": "Wow!"
+            },
+            {
+              "id": 231,
+              "name": "Andrew",
+              "avatar": "https://preview.redd.it/this-person-does-not-exist-v0-9l5x3d2g21591.jpg?auto=webp&s=97e2a0e5624f9e052678ddb38812fea2945f5b19",
+              "text": "Breath taking! Have a great time, Robert!"
             }
+        
           ],
           "liked": false
         }

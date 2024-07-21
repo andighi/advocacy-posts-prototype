@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
+import { setInitialData } from "../store/reducers/usersReducer";
+import initialUsersInfo from "../initialData.json";
 
 function PostPage() {
   const usersInfo = useSelector((state) => state.users.users);
@@ -8,19 +10,28 @@ function PostPage() {
   const [post, setPost] = useState({});
   const { userId } = useParams();
   const [query] = useSearchParams();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (usersInfo.length) {
-      const currentUser = usersInfo.find(
-        (user) => user.userId === Number(userId)
-      );
+  const setUserAndPostData = () => {
+    const currentUser = usersInfo.find(
+      (user) => user.userId === Number(userId)
+    );
+
+    if (currentUser) {
       setUser(() => currentUser);
       const currentPost = currentUser.posts.find(
         (post) => post.postId === Number(query.get("postId"))
       );
       setPost(() => currentPost);
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    if (!usersInfo || !usersInfo.length) {
+      dispatch(setInitialData());
+    }
+    setUserAndPostData();
+  }, [usersInfo]);
 
   return (
     <>
