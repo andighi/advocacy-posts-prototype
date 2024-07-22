@@ -1,14 +1,21 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateLikeAction } from "../../../store/reducers/usersReducer";
 import { useState } from "react";
+import { useUserAndPost } from "../../../helpers/useUserAndPost";
 
 function ActionsSection({ postData, emitFocus }) {
+  const usersInfo = useSelector((state) => state.users.users);
+
   const [focus, setFocus] = useState(null);
 
   const dispatch = useDispatch();
 
   const onClickLike = (payload) => {
-    dispatch(updateLikeAction(payload));
+    const { userIndex, postIndex } = useUserAndPost(usersInfo, payload);
+
+    if (userIndex !== null && postIndex !== null) {
+      dispatch(updateLikeAction({ userIndex, postIndex, ...payload }));
+    }
   };
 
   const focusOnInput = () => {

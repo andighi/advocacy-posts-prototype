@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../../store/reducers/usersReducer";
+import { useUserAndPost } from "../../../helpers/useUserAndPost";
 
 function AddCommentSection({ postData, focusInput }) {
+  const usersInfo = useSelector((state) => state.users.users);
+
   const inputRef = useRef(null);
 
   const [comment, setComment] = useState("");
@@ -13,7 +16,14 @@ function AddCommentSection({ postData, focusInput }) {
   };
 
   const onCommentSubmit = () => {
-    dispatch(addComment({ ...postData, comment: comment }));
+    const { userIndex, postIndex } = useUserAndPost(usersInfo, postData);
+
+    if (userIndex !== null && postIndex !== null) {
+      dispatch(
+        addComment({ userIndex, postIndex, ...postData, comment: comment })
+      );
+    }
+
     setComment("");
   };
 
