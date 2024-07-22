@@ -2,6 +2,11 @@
 A prototype of a new posts feed.
 
 
+## Install and start
+npm install
+npm run dev
+
+
 What could have been done better:
 
 ### 1. Generate ids better
@@ -10,6 +15,7 @@ I used Date.now() to generate an id when adding a new comment. This could have b
 
 ### 2. Testing
 For the input, I tried to test when you click on Comment button, input goes into focus. I could't do it as I used a doFocus() from Catalyst.
+Also they could be more focused on specific components.
 
 
 ### 3. Data fetching
