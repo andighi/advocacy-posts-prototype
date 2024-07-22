@@ -21,7 +21,7 @@ At the comment subission, I could have used a form, but the submit event was not
 
 
 ### 5. Catalyst
-There was a roblem with sanitization of Fonts when I tried to import them.
+There was a problem with sanitization of Fonts when I tried to import them.
 
 ### 6. Error handling
 Error handling could be done better. In case a param is missing, there should be a specific handling for each param.

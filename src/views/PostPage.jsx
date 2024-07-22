@@ -57,14 +57,14 @@ function PostPage() {
               <cat-icon icon="thumbs-up-outlined" size="xl" />
               <span>
                 Liked by{" "}
-                {post.likedBy ? (
-                  post.likedBy.length ? (
-                    post.likedBy.length
-                  ) : (
-                    <span>no one</span>
-                  )
-                ) : (
+                {!post.likedBy ? (
                   0
+                ) : post.liked ? (
+                  post.likedBy.length + 1
+                ) : post.likedBy.length ? (
+                  post.likedBy.length
+                ) : (
+                  <span>no one</span>
                 )}
               </span>
             </div>
