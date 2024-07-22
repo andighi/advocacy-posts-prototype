@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import store from "../../../store/store";
 import initialData from "../../../initialData.json";
 import userEvent from "@testing-library/user-event";
-import { expect, test } from "vitest";
+import { expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 import FeedPage from "../../../views/FeedPage";
 
