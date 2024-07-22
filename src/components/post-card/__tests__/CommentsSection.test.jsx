@@ -5,7 +5,6 @@ import initialData from "../../../initialData.json";
 import userEvent from "@testing-library/user-event";
 import { expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
-import PostCard from "../PostCard";
 import FeedPage from "../../../views/FeedPage";
 
 const renderWithProvider = (ui, { reduxStore = store } = {}) => {

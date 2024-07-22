@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
 import { setInitialData } from "../store/reducers/usersReducer";
-import initialUsersInfo from "../initialData.json";
 
 function PostPage() {
   const usersInfo = useSelector((state) => state.users.users);
