@@ -19,18 +19,25 @@ function FeedPage() {
   return (
     <>
       <div className="posts-container cat-p-xl">
-        {usersInfo &&
+        {usersInfo.length &&
           usersInfo.map((user) =>
-            user.posts.map((post) => (
-              <PostCard
-                userId={user.userId}
-                name={user.name}
-                avatar={user.avatar}
-                post={post}
-                key={post.postId}
-              />
-            ))
+            user.posts.map(
+              (post) =>
+                user.userId &&
+                user.name &&
+                user.avatar &&
+                post.postId && (
+                  <PostCard
+                    userId={user.userId}
+                    name={user.name}
+                    avatar={user.avatar}
+                    post={post}
+                    key={post.postId}
+                  />
+                )
+            )
           )}
+        {!usersInfo.length && <div>No posts yet</div>}
       </div>
     </>
   );
